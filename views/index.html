@@ -1,0 +1,20 @@
+
+<section class="grid-3"> 
+    @{ foreach m in model.items }
+        <div class="item" onclick="">
+            <div class="image"> <img src="@{m.photo}" alt=""></div>
+            <div class="description">
+                <span class="avatar"> <img src="@{m.user.photo}" alt=""></span>
+                <div> 
+                <span class="title">@{m.name}</span>
+                <span class="username">@{m.user.name} <i class="ti ti-check"></i> </span>
+                <span class="views">@{m.views} viewers </span>
+                <span class="live"> <i class="ti ti-stop-alt"></i> Live</span>
+
+                </div>
+                <span class="dots"> <i class="ti ti-ellipsis-v"></i></span>
+
+            </div>
+        </div>
+    @{end}
+</section>
