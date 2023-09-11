@@ -63,9 +63,7 @@
         </ul>
     </header>
     <main>
-
         <div class="tags">
-
         @{foreach m in model.tags }
         <span @{if m.name.slug() == model.slug } class="active" @{fi}>@{m.name}</span>
         @{end}
