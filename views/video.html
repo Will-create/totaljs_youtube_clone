@@ -1,0 +1,182 @@
+<div class="row">
+    <div class="col-md-8">
+        <div class="video-item" onclick="">
+            <div class="image"> <img src="@{model.item.photo}" alt=""></div>
+            <div class="description">
+                <span class="title">Musique pour le travail-Programmation-Piratage- Codage Radio</span>
+                <div class="description-item">
+                    <span class="avatar"> <img src="@{model.item.user.photo}" alt=""></span>
+                    <div class="user-name">
+                        <div>@{model.item.user.name}
+                            <i class="ti ti-check"></i>
+                        </div>
+                        <span>965 K abonnees</span>
+                    </div>
+                    <div class="subscribe">S'abonner</div>
+                    <div class="appreciate">
+                        <div class="like">
+                            <span><i class="ti ti-thumbs-up"></i></span>
+                            <span>7,3 K</span>
+                        </div>
+                        <div class="unlike">
+                            <span><i style="transform:rotate(180deg)" class="ti ti-thumbs-up"></i></span>
+                        </div>
+                    </div>
+                    <div class="share">
+                        <span><i class="ti ti-share"></i></span>
+                        <span>Partager</span>
+                    </div>
+                    <span class="menu"><i class="ti ti-ellipsis-v"></i></span>
+                </div>
+                <div class="description-text">
+                    <div>
+                        <h4>374 visionnages</h4>
+                        <span>New York</span>
+                    </div>
+                    <p id="desc">
+                        @{model.description}
+                    
+                        <div id="tdesc" class="more exec" data-exec="toggle">...Afficher plus</div>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="chat">
+            <div class="chat-header">
+                <div>
+                    <div>top chat
+                        <i class="ti ti-check"></i>
+                    </div>
+                </div>
+                <span class="dots1"> <i class="ti ti-ellipsis-v"></i></span>
+            </div>
+            <div class="chat-container">
+                <ui-bind path="messages" config="template">
+                    <script type="text/html" >
+                        {{ foreach m in value }}
+                        <div class="chat-item">
+                            <div>
+                            <span><img src="/img/avatar2.jpeg" alt="profil"></span>
+                                <span class="name">{{ '@' + m.user.name.split(' ')[0].slug() }}</span>
+                            </div>
+                            <p>{{ m.value }} <br><b>{{ m.dtcreated | timeago }}</b></p>
+                            <span class="dots"> <i class="ti ti-ellipsis-v"></i></span>
+                        </div>
+                        {{ end }}
+                    </script>
+                </ui-bind>
+            </div>
+            <div class="chat-footer">
+                <div class="footer-container">
+                    <div>
+                        <div class="footer-item">
+                            <span><img src="/img/avatar2.jpeg" alt="profil"></span>
+                            <div class="footer-user">
+                                <span class="name">Kientega Nourdine</span>
+                                <input id="chat-input" type="text" placeholder="Discuter...">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="item-icone">
+                            <span><i class="ti ti-smile"></i></span>
+                            <div>
+                                <span>0/200</span>
+                                <span><i class="ti ti-send"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div id="option">Masquer la conversation par chat</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+
+    var id = '@{model.item.id}';
+    var input = $('#chat-input');
+    var user = {name: 'Kientega Nourdine 1'};
+    var sse = new EventSource('/sse/chat/'+ id);
+
+    var messages = [];
+
+
+    ON('ready', function() {
+        AJAX('GET /watch/messages/' + id, function(response, err) {
+            messages = response;
+            console.log('LIVE messages', messages);
+            UPD('messages', messages);
+
+        });
+    });
+
+
+    $('body').on('change', '#chat-input', function(e) {
+        var value = $(e.target).val();
+        var msg = {};
+        msg.user = user;
+        msg.value = value;
+        AJAX('POST /chat/' + id, msg, function(response, err) {
+            console.log('SUCCESS', response);
+            input.val('');
+        });
+    });
+
+  
+    sse.onmessage = function(ev) {
+        var data = JSON.parse(ev.data);
+        if (data.type === 'hello') {
+            setTimeout(function() {
+                console.log('Message:', data);
+                SETTER('notify/success', 'CONNECTED');
+            }, 3000);
+        } else if (data.type == 'message') {
+            PUSH('messages', data.data);
+        }
+    };
+
+    sse.onerror = function(e) {
+        console.log('Error:', e);
+    };
+
+
+document.addEventListener('keyup', function(e) {
+    var key = e.keyCode;
+    if (key !== 13)
+        return;
+});
+    function append(text, short) {
+        if (short)
+            $('#desc').text(text.substring(0, 90) + '...'); 
+        else
+            $('#desc').text(text.substring(0, text.length)); 
+
+    
+        return short;
+    }
+
+    
+
+    var text = $('#desc').text(); 
+    var btn = $('#tdesc');
+
+
+    function toggle() {
+        if (btn.text()  === '...Afficher plus') {
+            append(text, false);
+            btn.text('...Afficher moins');
+        } else {
+            append(text, true);
+            btn.text('...Afficher plus');
+        }
+    }
+    toggle();
+
+
+    
+</script>

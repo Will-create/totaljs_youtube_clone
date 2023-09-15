@@ -20,7 +20,7 @@
         header ul li i:hover {opacity: .5;}
 
         /*Style for tags*/
-        main {margin: 0 5%; width: 90%; }
+        main {margin: 0 5%; width: 85%; }
 
         main div.tags { padding: 10px 0; margin-top: 25px; width: 100%; height: 40px; overflow-x: scroll; }
         main div.tags::-webkit-scrollbar { display: none;}
@@ -30,8 +30,8 @@
         /*LIVE VIDEOS STYLE*/
 
         section { margin: 25px 0 }
-        section .item { width: 400px; height: auto; cursor: pointer;}
-        section .item .image {width: 100%; overflow: hidden; border-radius: 16px; height: 250px; display: flex; align-items: center; justify-content: center;}
+        section .item { width: 100%; height: auto; cursor: pointer;}
+        section .item .image {width: 100%; overflow: hidden; border-radius: 16px; height: 200px; display: flex; align-items: center; justify-content: center;}
         section .item .image:hover { border-radius: 0; transition: ease .4s}
         section .item .image img {width: 100%; height: 100%;}
 
@@ -46,13 +46,155 @@
         
         .item .description div span.live { font-size: small; background-color: red; padding: 3px 5px; color: #fff; width: fit-content; }
         .item .description span {}
+
+
+        .video-item { margin: 25px 0; width: 100%; height: auto; }
+        .video-item .image {width: 100%; cursor: pointer; overflow: hidden; border-radius: 16px; height: 380px; display: flex; align-items: center; justify-content: center;}
+        .video-item .image img {width: 100%; height: 100%;}
+
+        .video-item .description { margin: 15px 0}
+        .video-item .description-item { width: 100%; height: 40px; display:flex; justify-content: space-between; margin: 15px 0}
+        .video-item .description-item span.avatar { cursor: pointer; width: 40px; height: 40px; overflow: hidden; border-radius: 100%; border: 2px solid red; display: flex; align-items: center; justify-content: center; margin-right: 10px}
+        .video-item .description-item span img {width: 100%; height: 100%;}
+        .video-item .user-name div { display: flex; align-items: center;}
+        .video-item .user-name i { background-color: #000; font-size: 8px; border-radius: 50%; padding: 2px; color: #fff; margin-left: 5px; }
+        .video-item .user-name span { font-size: .7rem; color: #b0b0b0; }
+
+        .video-item .subscribe { cursor: pointer; display: flex; justify-content: center; align-items: center; padding: 10px 15px; border-radius: 30px; background: #000; color: #fff; font-weight: bold; cursor: pointer;}
+        .video-item .subscribe:hover { opacity: .7; }
+        .video-item .appreciate { font-size: .7rem; display: flex; align-items: center; border-radius: 30px; background: #f1f1f1; }
+        .video-item .like { cursor: pointer; width: 100%; height: 100%; border-right: 1px solid #e0e0e0; display: flex; align-items: center; padding-left: 15PX;}
+        .video-item .like span { margin-right: 5px;}
+        .video-item .like span:hover { background: #e0e0e0;}
+        .video-item .unlike { cursor: pointer; height: 100%; padding: 5px 10px; display: flex; justify-content: center; align-items: center; }
+        .video-item .unlike span { padding: 5px 10px; }
+        .video-item .like:hover { background: #e0e0e0; border-top-left-radius: 30px; border-bottom-left-radius: 30px; }
+        .video-item .unlike:hover { background: #e0e0e0; border-top-right-radius: 30px; border-bottom-right-radius: 30px; }
+        .video-item .share { cursor: pointer; font-size: .7rem; display: flex; align-items: center; border-radius: 30px; background: #f1f1f1; }
+        .video-item .share span { height: 100%; padding: 5px; display: flex; justify-content: center; align-items: center; }
+        .video-item .share:hover { background: #e0e0e0; border-radius: 30px; border-bottom-left-radius: 30px; }
+        .video-item .menu { cursor: pointer; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; border-radius: 20px; background: #f1f1f1; }
+        .video-item .menu:hover { background: #e0e0e0;  }
+        
+        .video-item .description-text { width:100%; height: fit-content; padding: 0 10px; background: #f1f1f1; font-size: .8rem; border-radius: 10px; overflow: scroll;}
+        .video-item .description-text:hover { background: #e0e0e0; }
+        .video-item .description-text div { display: flex; align-items: center; }
+        .video-item .description-text div h4 { margin: 0; }
+        .video-item .description-text div span { font-size: 18px; font-weight: bold; opacity: .7; margin-left: 5px; }
+        .video-item .description-text p { margin-top: 0; }
+
+        
+        .chat { width: 100%; margin-top: 25px; border: 1px solid #e0e0e0; border-radius: 7px;}
+        .chat .chat-header { width: 100%; display: flex; justify-content: space-between; align-items: center; border-bottom:  1px solid rgba(0, 0, 0, .3); }
+        .chat .dots1 {  cursor: pointer; margin-right: 10px; padding: 6px; border-radius: 50%; }
+        .chat .dots1:hover { background: rgba(0, 0, 0, .08); }
+        .chat .chat-header div { cursor: pointer; width: 200px; padding: 5px 10px; display: flex; align-items: center; }
+        .chat .chat-header div i { margin-left: 10px; font-size: 12px; font-weight: .7; }
+        .chat .chat-container { display: flex; flex-direction: column-reverse; justify-content: end; overflow: scroll; width: 100%; height:350px; padding-right: 10px; margin: 5px 0; border-bottom:  1px solid rgba(0, 0, 0, .3); }
+        .chat .chat-item { margin: 5px 0; cursor: pointer; padding-left: 10px; font-size: .7rem; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .chat .chat-item:hover { background: rgba(0, 0, 0, .08); }
+        .chat .chat-item img { width: 25px; height: 25px; border-radius: 50%; margin-right: 10px; }
+        .chat .name { opacity: .7; margin-right: 10px; }
+        .chat .dots { display: none; }
+        .chat .chat-item:hover .dots { display: block; }
+
+        .chat .chat-footer { width: 100%; }
+        .chat .footer-container { width: 100%; }
+        .chat .footer-container div { width: 100%; padding: 0 5px; margin-top: 5px;}
+        .chat .footer-item { font-size: .8rem; height: 40px; margin: 10px 0; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .chat .footer-item img { width: 30px; height: 30px; border-radius: 50%; margin-right: 10px;}
+        .chat .footer-user { width: 100%; height: 100%; margin: 0;}
+        .chat .name { opacity: .2px; }
+        .chat .footer-user { display: flex; flex-direction: column; }
+        .chat .footer-user input { border: 0px; }
+        .chat .footer-user input:focus { border: none; outline: none;}
+        .chat .footer-user hr { background:#e0e0e0; transition: all .8s; margin: 0;}
+        .chat .footer-user input:focus hr { background: blue;}
+        .chat .item-icone { font-size: .8rem; height: 35px; margin-top: 20px; width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .chat .item-icone i { font-size: 20px; margin-right: 10px; cursor: pointer; }
+        .chat .item-icone div { width: 100%; display: flex; align-items: center; justify-content: flex-end;}
+        .chat .item-icone div span { margin: 0 5px; opacity: .5rem;  }
+        .chat .item-icone div i { margin: 0 5px; }
+        .chat .footer-container hr { background:#e0e0e0; margin: 0;}
+        .chat #option { cursor: pointer; font-size: .8rem; font-weight: bold; padding: 10px 15px; margin: 4px 8px; width: 90%; display: flex; justify-content: center; align-items: center;}
+        .chat #option:hover { background: rgba(0, 0, 0, .08); border-radius: 50px;}
+
+
         
     </style>
+
+    <script>
+        function getFormattedDate(date, prefomattedDate = false, hideYear = false) {
+            const day = date.getDate();
+            const month = MONTHS[date.getMonth()];
+            const year = date.getFullYear();
+            const hours = date.getHours();
+            let minutes = date.getMinutes();
+          
+            if (minutes < 10) {
+              // Adding leading zero to minutes
+              minutes = `0${ minutes }`;
+            }
+          
+            if (prefomattedDate) {
+              // Today at 10:20
+              // Yesterday at 10:20
+              return `${ prefomattedDate } at ${ hours }:${ minutes }`;
+            }
+          
+            if (hideYear) {
+              // 10. January at 10:20
+              return `${ day }. ${ month } at ${ hours }:${ minutes }`;
+            }
+          
+            // 10. January 2017. at 10:20
+            return `${ day }. ${ month } ${ year }. at ${ hours }:${ minutes }`;
+          }
+          
+          
+        Thelpers.timeago = function(dateParam) {
+            if (!dateParam) {
+                return null;
+              }
+            
+              const date = typeof dateParam === 'object' ? dateParam : new Date(dateParam);
+              const DAY_IN_MS = 86400000; // 24 * 60 * 60 * 1000
+              const today = new Date();
+              const yesterday = new Date(today - DAY_IN_MS);
+              const seconds = Math.round((today - date) / 1000);
+              const minutes = Math.round(seconds / 60);
+              const isToday = today.toDateString() === date.toDateString();
+              const isYesterday = yesterday.toDateString() === date.toDateString();
+              const isThisYear = today.getFullYear() === date.getFullYear();
+            
+            
+              if (seconds < 30) {
+                return 'Just now';
+              } else if (seconds < 60) {
+                return `${ seconds } seconds ago`;
+              } else if (seconds < 90) {
+                return 'about a minute ago';
+              } else if (minutes < 60) {
+                return `${ minutes } minutes ago`;
+              } else if (isToday) {
+                return getFormattedDate(date, 'Today'); // Today at 10:20
+              } else if (isYesterday) {
+                return getFormattedDate(date, 'Yesterday'); // Yesterday at 10:20
+              } else if (isThisYear) {
+                return getFormattedDate(date, false, true); // 10. January at 10:20
+              }
+            
+              return getFormattedDate(date); // 10. January 2017. at 10:20
+        }
+    </script>
 </head>
+
 <body>
+    <ui-component name="exec"></ui-component>
+    <ui-component name="notify"></ui-component>
     <header>
-        <a href="#">MyTUBE</a>
-        <input type="search" name="search" placeholder="Search" id="">
+        <a href="/">MyTUBE</a>
+        <input type="search" name="search"  placeholder="Search" id="search">
         <ul>
             <li> <i class="ti ti-upload"></i></li>
             <li> <i class="ti ti-camera"></i></li>
@@ -65,10 +207,47 @@
     <main>
         <div class="tags">
         @{foreach m in model.tags }
-        <span @{if m.name.slug() == model.slug } class="active" @{fi}>@{m.name}</span>
+        <span class="exec @{if m.name.slug() == model.slug } active @{fi}" data-exec="filter" >@{m.name}</span>
         @{end}
         </div>
         @{body}
     </main>
+
+    <script>
+        function filter(el) {
+            location.href = '/?tag=' + el.text();
+        }
+
+        function updateQueryStringParameter(uri, key, value) {
+            var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+            var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+            if (uri.match(re)) {
+              return uri.replace(re, '$1' + key + "=" + value + '$2');
+            }
+            else {
+              return uri + separator + key + "=" + value;
+            }
+          }
+
+        $('body').on('change', '#search', function(e) {
+                var value = $(e.target).val();
+                var q = location.href.indexOf('search');
+                location.href = updateQueryStringParameter(location.href, 'search', value);
+        });
+
+        document.addEventListener('keyup', function(e) {
+            var key = e.keyCode;
+            if (key !== 13)
+                return;
+        });
+
+
+        function view(el) {
+            var id = $(el).attrd2('id');
+            location.href = '/watch?v=' + id;
+        }
+
+
+    </script>
 </body>
 </html>
