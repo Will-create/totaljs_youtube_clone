@@ -5,6 +5,7 @@ exports.install = function() {
     ROUTE('GET /watch/', watch);
     ROUTE('POST /chat/{video}/', chat);
     ROUTE('GET /sse/chat/{video}/', sse_chat, ['sse']);
+    ROUTE('GET /admin/', admin);
 }
 
 
@@ -108,4 +109,9 @@ async function live_messages(video) {
     var db = DB();
     var messages = await db.find('nosql/messages').where('videoid', video).promise();
     self.json(messages);
+}
+
+function admin() {
+    var self = this;
+    self.view('admin', {items: []});
 }
