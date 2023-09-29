@@ -5,56 +5,153 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dahsboard</title>
     <!--================== link remixicon =====================-->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     <style>
         /********************** Header style*************************/
-        body { margin: 0; padding: 0;}
-        header { padding: 10px; }
+         body { margin: 0; padding: 0; }
+         header { max-width: 100%; padding: 10px; }
         .header-container { width: 100%; display: flex; justify-content: space-between; align-items: center; }
         .header-container div { display: flex; justify-content: space-between; align-items: center; }
+        .header-container div:first-child{ position: relative; }
+        .header-container .show-menu { position: relative; z-index: 1003; cursor: pointer;}
+        .header-container div svg { width: 15px; height: 15px; margin: 0 5px; cursor: pointer; }
         .header-container .logo span{ font-weight: 700; font-size: 20px; }
-        .header-container .logo span:first-child{ width: 30px; height: 30px; background-image: linear-gradient(to right, violet, blue );  color: #fff; display: flex; justify-content: center; align-items: center; border-radius: 50%; margin: 0 5px; } 
-        .header-container .search { position: relative;} 
-        .header-container .search input{ border: none; min-width: 550px; height: 30px; background: #f1F1F1; display: flex; justify-content: space-between; align-items: center; } 
-        .header-container .search svg { position: absolute; right: 10px; } 
-        .header-container div svg { width: 15px; height: 15px; margin: 0 5px; }
-        .header-container :where(.notification, .message)  { position: relative; margin-right: 30px; }
-        .header-container .notification span { font-size: 10px; width: 20px; padding-top: 2px; text-align: center; border-radius: 5px; background: red; transform: translate(-50%,-85%);}
-        .header-container .message span { font-size: 10px; width: 20px; padding-top: 2px; text-align: center; border-radius: 5px; background: rgb(98, 220, 98); transform: translate(-35%,-85%); }
+        .header-container .logo span:first-child{ width: 30px; height: 30px; background-image: linear-gradient(to right, violet, blue );  color: #fff; display: flex; justify-content: center; align-items: center; border-radius: 50%; margin: 0 5px; cursor: pointer; } 
+        .header-container .search { position: relative; width: 30%;} 
+        .header-container .search input{ border: none; width: 100%; height: 30px; background: #f1F1F1; display: flex; justify-content: space-between; align-items: center; } 
+        .header-container .search svg { position: absolute; right: 8px; bottom: 8px; cursor: pointer;} 
+        .header-container :where(.notification, .message)  { position: relative; margin-right: 30px; cursor: pointer; }
+        .header-container .notification span { font-size: 10px; width: 20px; padding-top: 2px; text-align: center; border-radius: 5px; background: red; transform: translate(-50%,-75%);}
+        .header-container .message span { font-size: 10px; width: 20px; padding-top: 2px; text-align: center; border-radius: 5px; background: rgb(98, 220, 98); transform: translate(-35%,-75%); }
         .header-container .user { display: flex; justify-content: space-between; align-items: center; margin-right: 5px; }
-        .header-container .user img { width: 30px; height: 30px; margin-right: 15px; border-radius: 50%; }
+        .header-container .user img { width: 30px; height: 30px; margin-right: 15px; border-radius: 50%; cursor: pointer; }
 
-        /********************** Main style*************************/
-        .main-container { width: 100%; display: flex; }
-        .main-container .menu { width: 15%; background-image: linear-gradient(to right, violet, blue ); }
-        .main-container .options div { width: 100%; display: flex; align-items: center; padding: 10px 0; }
-        .main-container .active{ background-color: rgba(255, 255, 255, .2); }
-        .main-container .options div svg { width: 15px; height: 15px; margin: 0 10px; fill: #fff;}
-        .main-container .options div span { color: #fff;}
-        .main-container .page { display: flex; justify-content: space-between; align-items: center; }
-        .main-container .categorie { display: flex; justify-content: space-between; align-items: center; }
+        /********************** MENU style*************************/
+         main { width: 100%; height: 100vh; padding-bottom: 5px;}
+        .main-container { max-width: 100%; min-height: 100%; display: flex; margin: 0;  }
+        .main-container .menu { width: 15%; background-image: linear-gradient(to right, violet, blue ); display: none; transition: all 5s ease-in-out; }
+        .show .menu { display: block; }
+        .menu .options div { width: 100%; display: flex; align-items: center; padding: 10px 0; cursor: pointer; }
+        .menu .active{ background-color: rgba(255, 255, 255, .2); }
+        .menu .options div svg { width: 15px; height: 15px; margin: 0 10px; fill: #fff;}
+        .menu .options div span { color: #fff;}
+        .menu .page { display: flex; justify-content: space-between; align-items: center; }
+        .menu .categorie { display: flex; justify-content: space-between; align-items: center; }
 
         /********************** SUBSCRIPTIONS *************************/
-        hr { height: 2px; background: rgb(249, 130, 146);}
-        .subscribe { padding: 10px; }
+        .subscribe { padding: 10px; border-top: 2px solid rgb(240, 77, 77); }
         .subscribe h5 { color: #fff; margin: 0; }
         .subscribe .item { width: 100%; display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
-        .subscribe .item div { width: 100%; display: flex; align-items: center; color: #fff; }
+        .subscribe .item div { width: 100%; display: flex; align-items: center; color: #fff; cursor: pointer;  }
         .subscribe .item img { width: 30px; height: 30px; margin-right: 15px; border-radius: 50%; }
         .subscribe .news { width: 15px; height: 15px; color: #000; background: orange; font-size: 16px; border-radius: 2px; text-align: center; padding: 1px; }
 
 
+        /********************** MAIN PAGE *************************/
+        .main-page { width: 100%; background: #F1F1F1; }
+        .show .main-page { width: 85%; }
+        .main-page .channel { padding: 0 20px; margin-top: 25px; }
+        .main-page .channel-menu { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .main-page .channel-menu div { width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; background: #fff; border-radius: 50%; }
+        .main-page .channel-menu span { font-size: 22px; }
+        .main-page .channel-menu svg { width: 20px; height: 20px; fill: red; font-size: 20px; cursor: pointer; }
 
-        .main-container .main-page { width: 85%; background: #F1F1F1;}
+        /********************** CHANNEL CATEGORIES *************************/
+        .main-page .channel-categories { width: 100%; height: 100%;  margin-top: 15px; position: relative;}
+        .main-page .slider { width: 100%; height: 100%; display: flex; align-items: center;  scroll-behavior: smooth; overflow: scroll; transition: all .5s; column-gap: 3px;}
+        .main-page .slider::-webkit-scrollbar { display: none;}
+        .main-page .btn {  display: flex; justify-content: center; fill: #fff; align-items: center; width: 25px; height: 25px; position: absolute; background: #B1B1B1; top: 40%; border-radius: 50%; cursor: pointer; }
+        .main-page .btn svg {  width: 20px; height: 20px;  }
+        .main-page  #prev { left: 2px; }
+        .main-page  #next { right: 1px;  }
+        .main-page .categories-item { min-width: 140px;; height: 160px; background: #fff; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 0 5px rgba(0, 0, 0, .2); border-radius: 2px; cursor: pointer;}
+        .main-page .categories-item img { width: 60px; height: 60px; border-radius: 50%; margin-bottom: 10px;}
+        .main-page .categories-item span{  margin-bottom: 5px;}
+        .main-page .checked { width: 100%; display: flex; align-items: center; justify-content: space-around; }
+        .main-page .checked svg { width: 14px; height: 14px; background: rgb(22, 189, 22); fill: #fff; border-radius: 50%; }
+        .main-page .views { color: red; }
+
+        /********************** SECTION CHANNEL VIDEOS *************************/
+        .channel-video { width: 100%; border-top: 2px solid #B1B1B1; margin-top: 40px; }
+        .channel-video .video-menu { width: 100%; display: flex; justify-content: space-between; align-items: center; margin: 10px 0; }
+        .channel-video .video-menu > span { font-size: 22px;}
+        .channel-video .video-menu div { display: flex; align-items: center; color: red; }
+        .channel-video .video-menu div svg { width: 20px; height: 20px; border-radius: 50%; background: #fff; fill: red; margin-left: 10px; cursor: pointer;}
+
+        /********************** SECTION CHANNEL VIDEOS ITEMS *************************/
+        .channel-video .video-container { width: 100%; display: flex; gap: 25px; flex-wrap: wrap;  padding: 0 5px; padding-right: 10px;}
+        .channel-video .video-item { width: 23%; background: #fff; border-radius: 3px; box-shadow: 0 0 40px rgba(0, 0, 0, .2); }
+        .channel-video .video-item :where(h4, .domain, .details) { margin: 5px 0; padding: 0 5px; }
+        .channel-video .video { width: 100%; height: 50%; position: relative; cursor: pointer;}
+        .channel-video .video img { width: 100%; height: 100%; border-radius: 3px; }
+        .channel-video .timers { width: 30px; height: 20px; padding: 1px; display: flex; justify-content: space-between; align-items: center;  position: absolute; background: red; color: #fff; border-radius: 2px; bottom: 5px; right: 5px;}
+        .channel-video .domain { width: 100%; color: green; display: flex; align-items: center; }
+        .channel-video .domain svg { width: 12px; height: 12px; fill: #fff; background: green; border-radius: 50%; margin-left: 5px; }
+        .channel-video .details { width: 100%; display: flex; opacity: .4; align-items: center; }
+        .channel-video .details div { display: flex; align-items: center; margin-left: 5px; }
+        .channel-video .details svg  { width: 20px; height: 20px; }
+
+
+
+
+        /********************** RESPONSIVE *************************/
+
+        @media screen and (max-width: 1200px) {
+        .channel-video .video-item { width: 30%; }
+            
+        }
+
+        @media screen and (max-width: 991px) {
+            .channel-video .video-item { width: 47%; }
+                
+            }
+
+            @media screen and (max-width: 768px) {
+        .main-container .menu { position: absolute; top: 0; left: 0; width: 100%; display: flex; flex-direction: column; justify-content: center; padding-left: 50px; z-index: 1001; display: none; }
+        .main-container .show { display: block; }
+        .main-page { width: 100%; }
+        .channel-video .video-item { width: 98%; }
+        .show .menu { display: block; }
+        
+                    
+         }
     </style>
-    <script>
-        let page = document.querySelector('.main-page');
-        let u = page.innerWidth;
-        console.log(u);
 
-    </script>
 </head>
 <body>
     <!---->
    @{body}
+
+   <script>
+
+    /////////////////////////////// NAVIGATION CATEGORIES CHANNEL /////////////////////////////////////
+
+    let slider = document.querySelector('.slider');
+    let sliderItem = document.querySelector('.categories-item').offsetWidth;
+    let nextbtn = document.getElementById('next');
+    let prevbtn = document.getElementById('prev');
+    prevbtn.addEventListener('click', prev);
+    nextbtn.addEventListener('click', next);
+
+    let menu = document.querySelector('.main-container');
+    let show = document.querySelector('.show-menu');
+
+    ///////////////////// function prev() ///////////////////////
+    function prev () {
+        slider.scrollLeft -= sliderItem;
+        console.log(slider.scrollLeft);
+    }
+
+       ///////////////////// function next() ///////////////////////
+       function next () {
+           slider.scrollLeft += sliderItem;
+         console.log(slider.scrollLeft);
+    }
+
+    /////////////////// DISPLAY AND HIDE FONCTION ///////////////////
+    show.addEventListener('click', function () {
+        menu.classList.toggle('show');
+    })
+   </script>
 </body>
 </html>
