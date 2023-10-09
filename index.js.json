@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
 	"pid": 3488,
 	"date": "2023-10-09T13:17:54.490Z",
+=======
+	"pid": 43773,
+	"date": "2023-09-15T17:26:44.494Z",
+>>>>>>> ac317939bf2f7132ea6c4ad7d63b68ac26a36dcc
 	"port": 5000,
 	"ip": "0.0.0.0",
 	"stats": [
@@ -12,12 +17,21 @@
 				"build": 4089,
 				"app": "1.0.0"
 			},
+<<<<<<< HEAD
 			"pid": 3488,
 			"thread": "",
 			"mode": "debug",
 			"overload": 0,
 			"date": "2023-10-09T16:16:55.946Z",
 			"memory": 14.48,
+=======
+			"pid": 43773,
+			"thread": "",
+			"mode": "debug",
+			"overload": 0,
+			"date": "2023-09-15T17:35:44.611Z",
+			"memory": 7.44,
+>>>>>>> ac317939bf2f7132ea6c4ad7d63b68ac26a36dcc
 			"rm": 0,
 			"fm": 0,
 			"wm": 0,
@@ -32,15 +46,25 @@
 			"dbrm": 0,
 			"dbwm": 0,
 			"usage": 0,
+<<<<<<< HEAD
 			"requests": 301,
+=======
+			"requests": 0,
+>>>>>>> ac317939bf2f7132ea6c4ad7d63b68ac26a36dcc
 			"pending": 0,
 			"external": 0,
 			"errors": 0,
 			"timeouts": 0,
 			"online": 0,
+<<<<<<< HEAD
 			"uptime": 180,
 			"download": 0,
 			"upload": 0.625,
+=======
+			"uptime": 10,
+			"download": 0,
+			"upload": 0,
+>>>>>>> ac317939bf2f7132ea6c4ad7d63b68ac26a36dcc
 			"status": []
 		}
 	]
